@@ -1,0 +1,14 @@
+version: "2.2"
+
+services:
+  clamav-server:
+    image: clamav/clamav
+    volumes:
+      - ./clamd.conf:/etc/clamav/clamd.conf
+  clamav:
+    build: .
+    environment:
+      HOST: clamav-server
+      MAX_STREAM_SIZE: 888555333
+    ports:
+      - 5000:80
