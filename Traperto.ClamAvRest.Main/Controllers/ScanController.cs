@@ -65,12 +65,12 @@ namespace VirusScannerService.Controllers
             if (scanResult.InfectedFiles != null && scanResult.InfectedFiles.Count > 0)
             {
                 
-                _logger.LogError($"File {file.FileName} ok");
+                _logger.LogWarning($"File {file.FileName} infected");
                 
                 return Ok(InfectionsResultText);
             }
             
-            _logger.LogDebug($"File {file.FileName} infected");
+            _logger.LogInformation($"File {file.FileName} ok");
 
             return Ok(SuccessResultText);
         }
