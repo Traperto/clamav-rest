@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -40,7 +38,7 @@ namespace VirusScannerService.Controllers
 
             if (ip != null)
             {
-                clam = new ClamClient(IPAddress.Parse("127.0.0.1"), 13310);
+                clam = new ClamClient(IPAddress.Parse(ip), port);
             }
             else if (host != null)
             {

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Simple [ClamAV](http://www.clamav.net/) REST proxy. Inspired by [Solita/clamav-rest](https://github.com/solita/clamav-rest), this client adds some more environment configuration.
+Simple [ClamAV](https://www.clamav.net/) REST proxy. Inspired by [Solita/clamav-rest](https://github.com/solita/clamav-rest), this client adds some more environment configuration.
 
 Your __ClamAV-daemon is in the same docker-compose.yml__? Or shall the __service of the Docker host__ be used? Change these: 
 
@@ -75,4 +75,4 @@ Thanks to [Solita](https://github.com/solita) for the inspiration.
 
 ## Contact
 
-Contact us via [traperto.com](traperto.com).
+Contact us via [traperto.com](https://traperto.com).
