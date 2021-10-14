@@ -6,9 +6,10 @@ services:
     volumes:
       - ./clamd.conf:/etc/clamav/clamd.conf
   clamav:
-    build: .
+    image: jreinartz/clamav-rest
     environment:
       HOST: clamav-server
-      MAX_STREAM_SIZE: 888555333
+      # example for setting the maximal upload size to about 80MB:
+      MAX_STREAM_SIZE: 80100100
     ports:
       - 5000:80
