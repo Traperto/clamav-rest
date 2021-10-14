@@ -4,15 +4,15 @@ WORKDIR /app
 
 COPY . . 
 
-RUN dotnet restore ./VirusScannerService.sln
+RUN dotnet restore ./Traperto.ClamAvRest.sln
 
 COPY . .
 
-RUN dotnet publish ./VirusScannerService/VirusScannerService.csproj --output /out/ --configuration Release
+RUN dotnet publish ./Traperto.ClamAvRest.Main/Traperto.ClamAvRest.Main.csproj --output /out/ --configuration Release
 
 # runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
 COPY --from=build /out .
 
-ENTRYPOINT ["dotnet", "VirusScannerService.dll"]
+ENTRYPOINT ["dotnet", "Traperto.ClamAvRest.Main.dll"]
