@@ -16,25 +16,25 @@ namespace VirusScannerService
             Configuration = builder.Build();
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            
+
             services.Configure<FormOptions>(fo =>
-            {
-                fo.ValueLengthLimit = int.MaxValue;
-                fo.MultipartBodyLengthLimit = int.MaxValue; // In case of multipart
-            });
+                                            {
+                                                fo.ValueLengthLimit = int.MaxValue;
+                                                fo.MultipartBodyLengthLimit = int.MaxValue; // In case of multipart
+                                            });
             services.Configure<KestrelServerOptions>(options => options.Limits.MaxRequestBodySize = int.MaxValue);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-//            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
 
