@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace VirusScannerService.Controllers
 {
@@ -7,12 +6,12 @@ namespace VirusScannerService.Controllers
     [Route("")]
     public class DefaultController : ControllerBase
     {
-        private const string SuccessResultText = "Clamd responding: true";
+        private const string _SUCCESS_RESULT_TEXT = "Clamd responding: true";
 
         [HttpGet]
-        public async Task<OkObjectResult> Scan()
+        public OkObjectResult Scan()
         {
-            return Ok(SuccessResultText);
+            return Ok(_SUCCESS_RESULT_TEXT);
         }
     }
 }
