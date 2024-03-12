@@ -5,6 +5,8 @@ services:
     image: clamav/clamav
     volumes:
       - ./clamd.conf:/etc/clamav/clamd.conf
+    ports:
+      - 3310:3310
   clamav:
     image: jreinartz/clamav-rest
     environment:
