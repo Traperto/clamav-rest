@@ -9,7 +9,12 @@ public static class Scan
     {
         var scans = routes.MapGroup("/scan");
 
-        scans.MapPost("", async (IFormFile file, CancellationToken cancellationToken, ClamClient clamClient) =>
+        scans.MapPost("", async (
+            ILogger<Startup> logger,
+            IFormFile file,
+            CancellationToken cancellationToken,
+            ClamClient clamClient
+        ) =>
         {
             var stream = file.OpenReadStream();
             var scanResult =
@@ -17,17 +22,17 @@ public static class Scan
             
             if (scanResult.InfectedFiles is { Count: > 0 })
             {
-                //logger.LogWarning("File {fileName} infected", file.FileName);
+                logger.LogWarning("File {fileName} infected", file.FileName);
                 return Results.Ok(InfectionsResultText);
             }
 
             if (scanResult.Result.Equals(ClamScanResults.Clean))
             {
-                //logger.LogInformation("File {fileName} ok", file.FileName);
+                logger.LogInformation("File {fileName} ok", file.FileName);
                 return Results.Ok(SuccessResultText);
             }
 
-            //logger.LogWarning("Error when processing file {fileName}", file.FileName);
+            logger.LogWarning("Error when processing file {fileName}", file.FileName);
             return Results.BadRequest(scanResult.RawResult);
         }).DisableAntiforgery();
     }

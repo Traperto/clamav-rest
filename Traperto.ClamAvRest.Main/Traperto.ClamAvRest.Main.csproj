@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <RootNamespace>VirusScannerService</RootNamespace>
-        <Nullable>enable</Nullable>
+        <treatWarningsAsError>true</treatWarningsAsError>
     </PropertyGroup>
 
     <ItemGroup>
