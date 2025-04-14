@@ -54,7 +54,7 @@ namespace VirusScannerService
 
                 if (maxStreamSize != null)
                 {
-                    clamClient.MaxStreamSize = int.Parse(maxStreamSize); 
+                    clamClient.MaxStreamSize = long.Parse(maxStreamSize); 
                 }
             
                 if (maxChunkSize != null)
